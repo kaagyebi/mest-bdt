@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProgramDto } from './dto/create-program.dto';
-import { UpdateProgramDto } from './dto/update-program.dto';
+import { AnyKeys, UpdateQuery } from 'mongoose';
+import { Program } from './schemas/program.schema';
 
 @Injectable()
 export class ProgramsService {
-  create(createProgramDto: CreateProgramDto) {
+  create(doc: AnyKeys<Program>) {
+    console.log(doc);
     return 'This action adds a new program';
   }
 
@@ -16,7 +17,8 @@ export class ProgramsService {
     return `This action returns a #${id} program`;
   }
 
-  update(id: number, updateProgramDto: UpdateProgramDto) {
+  update(id: number, update: UpdateQuery<Program>) {
+    console.log(update);
     return `This action updates a #${id} program`;
   }
 

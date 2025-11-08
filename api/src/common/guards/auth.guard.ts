@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
       new URL(`${process.env.HANKO_API_URL}/.well-known/jwks.json`),
     );
     const request = context.switchToHttp().getRequest();
-    const token = this.extractTokenFromHeader(request);
+    const token = this.extractTokenFromHeader(request as Request);
     // console.log(token);
     if (!token) {
       throw new UnauthorizedException(

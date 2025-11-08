@@ -7,12 +7,13 @@ import { AppService } from './app.service';
 import { ProfilesModule } from './profiles/profiles.module';
 import { ProgramsModule } from './programs/programs.module';
 import { CohortsModule } from './cohorts/cohorts.module';
+import { Connection } from 'mongoose';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGO_URI as string, {
-      connectionFactory: (connection) => {
+      connectionFactory: (connection: Connection) => {
         connection.plugin(mongooseNormalizePlugin);
         return connection;
       },
