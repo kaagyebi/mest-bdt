@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Menu, X, LayoutDashboard, Group, User } from "lucide-react"; // Using Lucide Icons for simplicity
 import Link from "next/link";
 import HankoLogout from "../auth/HankoLogout";
+import NoSSR from "../core/NoSSR";
 
 // Define the type for a sidebar link item
 interface SidebarItem {
@@ -83,7 +84,9 @@ const Sidebar: React.FC = () => {
               })}
             </nav>
           </div>
-          <HankoLogout />
+          <NoSSR>
+            <HankoLogout />
+          </NoSSR>
         </div>
       </div>
 
