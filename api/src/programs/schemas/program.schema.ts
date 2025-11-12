@@ -7,6 +7,9 @@ export type ProgramDocument = HydratedDocument<Program>;
 export class Program {
   @Prop()
   name: string;
+
+  @Prop()
+  description: string;
 }
 
 export const ProgramSchema = SchemaFactory.createForClass(Program);

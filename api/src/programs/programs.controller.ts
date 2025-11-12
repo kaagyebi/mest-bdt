@@ -10,33 +10,35 @@ import {
 import { ProgramsService } from './programs.service';
 import { CreateProgramDto } from './dto/create-program.dto';
 import { UpdateProgramDto } from './dto/update-program.dto';
+import { Program } from './schemas/program.schema';
 
 @Controller('programs')
 export class ProgramsController {
   constructor(private readonly programsService: ProgramsService) {}
 
   @Post()
-  create(@Body() createProgramDto: CreateProgramDto) {
-    return this.programsService.create(createProgramDto);
+  async create(@Body() body:{name:string; description: string}): Promise<Program> {
+    const {name, description} = body;
+    return this.programsService.create(name, description);
   }
 
   @Get()
-  findAll() {
+  async findAll(): Promise<Program[]> {
     return this.programsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.programsService.findOne(+id);
+  async findOne(@Param('id') id: string): Promise<Program | null> {
+    return this.programsService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProgramDto: UpdateProgramDto) {
-    return this.programsService.update(+id, updateProgramDto);
+  async update(@Param('id') id: string, @Body() UpdateProgramDto:UpdateProgramDto) {
+    return this.programsService.update(id, UpdateProgramDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.programsService.remove(+id);
+  async remove(@Param('id') id: string): Promise<Program | null> {
+    return this.programsService.remove(id);
   }
 }

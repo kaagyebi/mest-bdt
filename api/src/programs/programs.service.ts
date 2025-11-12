@@ -1,28 +1,34 @@
 import { Injectable } from '@nestjs/common';
-import { AnyKeys, UpdateQuery } from 'mongoose';
-import { Program } from './schemas/program.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Program, ProgramDocument } from './schemas/program.schema';
+import { Model } from 'mongoose';
+
 
 @Injectable()
 export class ProgramsService {
-  create(doc: AnyKeys<Program>) {
-    console.log(doc);
-    return 'This action adds a new program';
+constructor(
+  @InjectModel(Program.name) private programModel: Model<ProgramDocument>) {} 
+
+  async create (name: string, description: string): Promise<Program>{
+    const newProgram = new this.programModel({name,description});
+    return newProgram.save();
   }
 
-  findAll() {
-    return `This action returns all programs`;
+  async findAll() : Promise<Program[]> {
+    return this.programModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} program`;
+  async findOne(id: string): Promise<Program | null> {
+    return this.programModel.findById(id).exec();
   }
 
-  update(id: number, update: UpdateQuery<Program>) {
-    console.log(update);
-    return `This action updates a #${id} program`;
+  async update(id: string, updateData: Partial<Program>): Promise<Program | null> {
+    return this.programModel
+    .findByIdAndUpdate(id, updateData, { new:true})
+    .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} program`;
+  async remove(id: string): Promise<Program | null> {
+    return this.programModel.findByIdAndDelete(id).exec();
   }
 }
