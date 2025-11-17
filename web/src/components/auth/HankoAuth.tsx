@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { register, Hanko } from "@teamhanko/hanko-elements";
 
 const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || "";
-const hanko = new Hanko(hankoApi);
 
 export default function HankoAuth() {
   const router = useRouter();
@@ -15,14 +14,13 @@ export default function HankoAuth() {
     router.replace("/");
   }, [router]);
 
-  useEffect(
-    () =>
-      hanko?.onSessionCreated(() => {
-        // successfully logged in
-        redirectAfterLogin();
-      }),
-    [redirectAfterLogin],
-  );
+  useEffect(() => {
+    const hanko = new Hanko(hankoApi);
+    hanko?.onSessionCreated(() => {
+      // successfully logged in
+      redirectAfterLogin();
+    });
+  }, [redirectAfterLogin]);
 
   useEffect(() => {
     register(hankoApi).catch((error) => {

@@ -3,29 +3,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 
-export default function Programs() {
+export default function Companies() {
   return (
     <>
       <div className="flex flex-col bg-gray-200 p-8 text-black">
         <section className=" flex justify-between ">
           <div>
             <h1 className="text-2xl md:text-3xl  font-semibold text-gray-900 tracking-tight">
-              Programs Management
+              Companies Management
             </h1>
-            <p className="mt-1 text-gray-600 text-base">List of Programs</p>
+            <p className="mt-1 text-gray-600 text-base">List of Companies</p>
           </div>
           <div>
-            <Link href={"/programs/add"}>
+            <Link href={"/companies/add"}>
               <button className="w-full bg-black p-1  md:p-2 flex md:flex-row md:gap-2 text-white rounded-lg cursor-pointer">
                 <span>
                   <Plus />
                 </span>
-                Add Program
+                Add Company
               </button>
             </Link>
           </div>
         </section>
-        {/* Initial Programs */}
+        {/* Initial Companies */}
         <section className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 ">
           <div className=" relative rounded-lg shadow-md space-y-2 bg-white ">
             <div className="relative w-full h-48  overflow-hidden">
@@ -46,17 +46,17 @@ export default function Programs() {
                 upcoming{" "}
               </p>
               <div className=" absolute top-2  right-2 flex items-center gap-3">
-                <Link href={"/programs/view?id=1"}>
+                <Link href={"/companies/view?id=1"}>
                   <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
                 </Link>
                 <Trash2 className="text-red-600 w-8 h-8 bg-white p-1.5 rounded-full shadow-sm hover:text-red-500 cursor-pointer transition" />
               </div>
             </div>
 
-            {/* Program Details */}
+            {/* Company Details */}
             <div className=" flex flex-col p-3  ">
               <h2 className=" font-semibold ">
-                Leadership development Program
+                Leadership development Company
               </h2>
               <p className="text-gray-700 text-base mt-2  leading-relaxed">
                 An intensive 12-week program designed to develop leadership
@@ -85,7 +85,7 @@ export default function Programs() {
             </div>
           </div>
 
-          {/* Initial Program */}
+          {/* Initial Company */}
           <div className="relative bg-white rounded-lg shadow-md space-y-3 ">
             <div className="relative w-full h-48 overflow-hidden">
               <Image
@@ -108,14 +108,14 @@ export default function Programs() {
                 </p>
               </div>
               <div className="absolute top-2 right-2 flex items-center gap-3">
-                <Link href={"/programs/view?id=2"}>
+                <Link href={"/companies/view?id=2"}>
                   <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
                 </Link>
                 <Trash2 className="text-red-600 w-8 h-8 bg-white rounded-full p-1.5 hover:text-red-500 cursor-pointer transition" />
               </div>
             </div>
 
-            {/* Programs Details */}
+            {/* Companies Details */}
             <div className="flex flex-col p-3">
               <h2 className=" font-semibold ">Technical Skills Bootcamp</h2>
               <p className="mt-2 text-gray-700 text-base leading-relaxed">
@@ -145,7 +145,7 @@ export default function Programs() {
             </div>
           </div>
 
-          {/* Initial Program */}
+          {/* Initial Company */}
           <div className="relative bg-white rounded-lg shadow-md space-y-3 ">
             <div className="relative w-full h-48 overflow-hidden">
               <Image
@@ -168,14 +168,14 @@ export default function Programs() {
                 </p>
               </div>
               <div className="flex top-2 right-2 absolute items-center gap-3">
-                <Link href={"/programs/view?id=3"}>
+                <Link href={"/companies/view?id=3"}>
                   <Eye className="w-8 h-8 text-gray-600 bg-white p-1.5 rounded-full hover:text-blue-500 cursor-pointer transition" />
                 </Link>
                 <Trash2 className="text-red-600 w-8 h-8 bg-white p-1.5 rounded-full hover:text-red-500 cursor-pointer transition" />
               </div>
             </div>
 
-            {/* Programs Details */}
+            {/* Companies Details */}
             <div className="flex flex-col p-3">
               <h2 className="font-semibold ">Product Management Fellowship</h2>
               <p className="mt-2 text-gray-700 text-base leading-relaxed">

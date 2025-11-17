@@ -2,28 +2,28 @@ import { Plus } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function AddProgram() {
+export default function AddCompany() {
   return (
     <div className="bg-gray-100 rounded-lg p-6">
       <div className="inline-block">
         {/* Back  Navigation */}
         <Link
-          href={"/programs"}
+          href={"/companies"}
           className="flex  items-center gap-2 rounded-lg text-sm text-black  hover:bg-gray-300 px-3 py-2  transition-all duration-200 "
         >
           <ArrowLeft
             size={18}
             className="transition-transform duration-200 group-hover:-translate-x-1"
           />
-          Back to programs
+          Back to companies
         </Link>
       </div>
 
-      {/* Creating new programs */}
+      {/* Creating new companies */}
       <div className="mt-6 bg-white p-4 shadow-lg rounded-lg text-black">
-        <h1 className=" text-xl md:ml-6  font-bold">Add New Program</h1>
+        <h1 className=" text-xl md:ml-6  font-bold">Add New Company</h1>
         <p className="mt-2 md:ml-6 text-gray-700 text-sm">
-          Create a new cohort program by filling out the information below
+          Create a new cohort company by filling out the information below
         </p>
         <div className=" w-[95%] mx-auto mt-6">
           {/* Basic Information Section */}
@@ -31,12 +31,12 @@ export default function AddProgram() {
           <form action="" className="space-y-6 mt-4">
             <div className=" flex flex-col justify-between">
               <label htmlFor="" className="text-sm text-gray-700 font-semibold">
-                Program Name
+                Company Name
                 <span className="text-red-700">*</span>
               </label>
               <input
                 type="text"
-                placeholder="e.g., Leadership Development Program"
+                placeholder="e.g., Leadership Development Company"
                 className="bg-gray-100 px-2 py-1 rounded-lg text-sm"
               />
             </div>
@@ -47,7 +47,7 @@ export default function AddProgram() {
               </label>
               <input
                 type="text"
-                placeholder="Provide a detailed description of the program..."
+                placeholder="Provide a detailed description of the company..."
                 className="bg-gray-100 px-2 py-3 rounded-lg text-sm"
               />
             </div>
@@ -136,13 +136,13 @@ export default function AddProgram() {
         </div>
         <div className="mt-10 border border-t-gray-400  "></div>
 
-        {/* Programs objectives */}
+        {/* Companys objectives */}
         <div className=" mt-4 w-[95%] mx-auto text-black ">
-          <h2 className="text-sm">Program Objectives</h2>
+          <h2 className="text-sm">Company Objectives</h2>
           <div className="mt-2 flex justify-between gap-4 ">
             <input
               type="text"
-              placeholder="Add a program objective..."
+              placeholder="Add a company objective..."
               className="bg-gray-100 px-4 py-3 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button className="flex gap-2 border px-3 py-1 rounded-lg items-center bg-white  cursor-pointer">
@@ -174,7 +174,7 @@ export default function AddProgram() {
         {/* Buttons */}
         <div className=" flex  gap-6 w-[95%] mx-auto mt-6 mb-10">
           <button className="bg-black text-white px-4 py-2 rounded-lg cursor-pointer">
-            Create program
+            Create company
           </button>
           <div className="px-4 py-2 rounded-lg border border-gray-600 cursor-pointer">
             Cancel

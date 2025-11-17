@@ -2,32 +2,32 @@ import { Plus } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function EditProgram() {
+export default function EditCompany() {
   return (
     <>
       {/* <p>
-        Edit an existing program page that populate with the existing data,
+        Edit an existing company page that populate with the existing data,
         allows for edit and submission to update on the backend
       </p> */}
       <div className="bg-gray-100 rounded-lg p-6">
         <div className="inline-block">
           <Link
-            href={"/programs"}
+            href={"/companies"}
             className="flex  items-center gap-2 rounded-lg text-sm text-black  hover:bg-gray-300 px-3 py-2  transition-all duration-200 "
           >
             <ArrowLeft
               size={18}
               className="transition-transform duration-200 group-hover:-translate-x-1"
             />
-            Back to programs
+            Back to companies
           </Link>
         </div>
 
-        {/* <p>Add a new program page showing a form to fill and submit</p> */}
+        {/* <p>Add a new company page showing a form to fill and submit</p> */}
         <div className="mt-6 bg-white p-4 shadow-lg rounded-lg text-black">
-          <h1 className=" text-xl md:ml-6  font-bold">Edit Program</h1>
+          <h1 className=" text-xl md:ml-6  font-bold">Edit Company</h1>
           <p className="mt-2 md:ml-6 text-gray-700 text-sm">
-            Update the program information below
+            Update the company information below
           </p>
           <div className=" w-[95%] mx-auto mt-6">
             <h2 className="text-sm">Basic Information</h2>
@@ -37,12 +37,12 @@ export default function EditProgram() {
                   htmlFor=""
                   className="text-sm text-gray-700 font-semibold"
                 >
-                  Program Name
+                  Company Name
                   <span className="text-red-700">*</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g., Leadership Development Program"
+                  placeholder="e.g., Leadership Development Company"
                   className="bg-gray-100 px-2 py-1 rounded-lg text-sm"
                 />
               </div>
@@ -56,7 +56,7 @@ export default function EditProgram() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Provide a detailed description of the program..."
+                  placeholder="Provide a detailed description of the company..."
                   className="bg-gray-100 px-2 py-3 rounded-lg text-sm"
                 />
               </div>
@@ -145,13 +145,13 @@ export default function EditProgram() {
           </div>
           <div className="mt-10 border border-t-gray-400  "></div>
 
-          {/* Program Objectives */}
+          {/* Company Objectives */}
           <div className=" mt-4 w-[95%] mx-auto text-black ">
-            <h2 className="text-sm">Program Objectives</h2>
+            <h2 className="text-sm">Company Objectives</h2>
             <div className="mt-2 flex justify-between gap-4 ">
               <input
                 type="text"
-                placeholder="Add a program objective..."
+                placeholder="Add a company objective..."
                 className="bg-gray-100 px-4 py-3 rounded-lg text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button className="flex gap-2 border px-3 py-1 rounded-lg items-center bg-white  cursor-pointer">
@@ -185,7 +185,7 @@ export default function EditProgram() {
 
           <div className=" flex  gap-6 w-[95%] mx-auto mt-6 mb-10">
             <button className="flex items-center justify-center bg-black text-white px-4 py-2 rounded-lg cursor-pointer">
-              Update program
+              Update company
             </button>
             <div className="flex px-4 py-2 rounded-lg border border-gray-600 cursor-pointer items-center justify-center">
               Cancel
