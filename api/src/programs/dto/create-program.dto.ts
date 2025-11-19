@@ -1,1 +1,4 @@
-export class CreateProgramDto {}
+export class CreateProgramDto {
+  name: string;
+  description: string;
+}
