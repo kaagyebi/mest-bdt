@@ -57,6 +57,18 @@ describe('CompaniesController', () => {
     expect(result).toEqual(company);
   });
 
+  it('should find all responses for a company', async () => {
+    const responses = [{ id: 'r1' }, { id: 'r2' }];
+    jest
+      .spyOn(service, 'findResponsesByCompany')
+      .mockResolvedValue(responses as any);
+    const result = await controller.findResponses('cid1');
+    expect(result).toEqual(responses);
+    expect(service.findResponsesByCompany as jest.Mock).toHaveBeenCalledWith(
+      'cid1',
+    );
+  });
+
   it('should update a company', async () => {
     const dto = { name: 'Updated' };
     jest.spyOn(service, 'updateOne').mockResolvedValue(dto as any);

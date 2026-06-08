@@ -25,6 +25,7 @@ import { CompaniesService } from './companies.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { Company } from './schemas/company.schema';
+import { Response } from '../responses/schemas/response.schema';
 import { AuthGuard } from '../common/guards/auth.guard';
 
 @ApiTags('companies')
@@ -79,6 +80,21 @@ export class CompaniesController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
   findOne(@Param('id') id: string) {
     return this.companiesService.findOne({ _id: id });
+  }
+
+  @UseGuards(AuthGuard)
+  @Get(':id/responses')
+  @ApiOperation({ summary: 'Get all responses for a company' })
+  @ApiOkResponse({
+    description: "The company's responses have been successfully found.",
+    type: [Response],
+  })
+  @ApiNotFoundResponse({
+    description: 'The company with the given id was not found.',
+  })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized.' })
+  findResponses(@Param('id') id: string) {
+    return this.companiesService.findResponsesByCompany(id);
   }
 
   @UseGuards(AuthGuard)

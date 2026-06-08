@@ -2,6 +2,7 @@ export const mockModel = {
   insertOne: jest.fn().mockReturnThis(),
   find: jest.fn().mockReturnThis(),
   findOne: jest.fn().mockReturnThis(),
+  findById: jest.fn().mockReturnThis(),
   updateOne: jest.fn().mockReturnThis(),
   countDocuments: jest.fn().mockReturnThis(),
   deleteOne: jest.fn().mockReturnThis(),

@@ -2,11 +2,13 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CompaniesService } from './companies.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { mockModel } from '../common/mocks/model';
-import { ConflictException } from '@nestjs/common';
+import { ConflictException, NotFoundException } from '@nestjs/common';
 
 const companyModelMock = { ...mockModel };
 const responseModelMock = { ...mockModel };
 const userModelMock = { ...mockModel };
+
+const VALID_ID = 'a'.repeat(24);
 
 describe('CompaniesService', () => {
   let service: CompaniesService;
@@ -71,6 +73,37 @@ describe('CompaniesService', () => {
       { _id: '1' },
       company,
     );
+  });
+
+  describe('findResponsesByCompany', () => {
+    it('returns the responses for an existing company', async () => {
+      const responses = [{ id: 'r1' }, { id: 'r2' }];
+      companyModelMock.findById.mockResolvedValue({ _id: VALID_ID });
+      responseModelMock.find.mockResolvedValue(responses);
+
+      const result = await service.findResponsesByCompany(VALID_ID);
+
+      expect(result).toEqual(responses);
+      expect(companyModelMock.findById).toHaveBeenCalledWith(VALID_ID);
+      expect(responseModelMock.find).toHaveBeenCalledWith({
+        company: VALID_ID,
+      });
+    });
+
+    it('throws 404 for a malformed id without querying', async () => {
+      await expect(
+        service.findResponsesByCompany('not-an-id'),
+      ).rejects.toBeInstanceOf(NotFoundException);
+      expect(companyModelMock.findById).not.toHaveBeenCalled();
+    });
+
+    it('throws 404 when the company does not exist', async () => {
+      companyModelMock.findById.mockResolvedValue(null);
+      await expect(
+        service.findResponsesByCompany(VALID_ID),
+      ).rejects.toBeInstanceOf(NotFoundException);
+      expect(responseModelMock.find).not.toHaveBeenCalled();
+    });
   });
 
   describe('deleteOne', () => {
